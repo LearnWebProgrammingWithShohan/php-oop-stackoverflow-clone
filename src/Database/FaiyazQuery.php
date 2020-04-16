@@ -3,7 +3,6 @@ namespace Src\Database;
 
 use PDOException;
 
-include_once '../../autoload.php';
 
 class FaiyazQuery extends FaiyazConnection
 {
