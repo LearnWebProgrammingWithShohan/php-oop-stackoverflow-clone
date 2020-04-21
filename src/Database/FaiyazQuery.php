@@ -1,8 +1,8 @@
 <?php
 namespace Src\Database;
 
+include "../../autoload.php";
 use PDOException;
-
 
 class FaiyazQuery extends FaiyazConnection
 {
@@ -37,7 +37,6 @@ class FaiyazQuery extends FaiyazConnection
 
             //If where is empty then it will return all the row from database as array
             return $stmt->fetchAll();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -54,7 +53,6 @@ class FaiyazQuery extends FaiyazConnection
 
             //fetch data
             return $stmt->fetch();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -96,7 +94,6 @@ class FaiyazQuery extends FaiyazConnection
 
             $stmt->execute();
             return $stmt->rowCount();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -112,7 +109,6 @@ class FaiyazQuery extends FaiyazConnection
 
             //execute the statement
             $stmt->execute();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -129,7 +125,6 @@ class FaiyazQuery extends FaiyazConnection
 
             //execute the prepared statement
             $stmt->execute();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -142,12 +137,11 @@ class FaiyazQuery extends FaiyazConnection
             $stmt = $this->connect()->prepare($sql);
             
             $stmt->execute();
-
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 }
 
-// $post = new FaiyazQuery();
-// $post->deleteAll('posts');
+ //$post = new FaiyazQuery();
+ //$post->insert('users', ["username"=>""]);
