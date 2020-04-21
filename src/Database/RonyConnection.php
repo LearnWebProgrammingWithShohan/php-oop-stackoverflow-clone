@@ -1,6 +1,9 @@
 <?php
 namespace Src\Database;
 
+use Exception;
+use PDO;
+
 class RonyConnection
 {
     protected $db;
