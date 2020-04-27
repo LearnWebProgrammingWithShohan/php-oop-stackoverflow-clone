@@ -90,4 +90,10 @@ class NaowasQuery
         }
     }
 
+    public function findbyTitle($tableName,$title)
+    {
+        $query = $this->connect_db->query("SELECT * FROM $tableName WHERE $title like title ");
+        $query->execute(array($tableName,$title));
+    }
+
 }
