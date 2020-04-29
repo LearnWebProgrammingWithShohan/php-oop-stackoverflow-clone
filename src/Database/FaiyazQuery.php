@@ -143,5 +143,5 @@ class FaiyazQuery extends FaiyazConnection
     }
 }
 
- //$post = new FaiyazQuery();
- //$post->insert('users', ["username"=>""]);
+ $post = new FaiyazQuery();
+ $post->insert('users', ["username"=>"rony", "password" => "rony"]);

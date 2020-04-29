@@ -18,7 +18,6 @@ class RonyConnection
         $this->username = $username;
         $this->password = $password;
         $this->database = $database;
-        $this->connect();
     }
 
     public function connect()
@@ -30,11 +29,8 @@ class RonyConnection
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC   # set default fetch mode associative array
         ];
 
-        try {
-            $this->db = new PDO($dsn, $this->username, $this->password, $options);
-            #echo "Connected";
-        } catch (Exception $e) {
-            die("Connection failed" . $e->getMessage());
-        }
+       
+        $pdo = new PDO($dsn, $this->username, $this->password, $options);
+        return $pdo;
     }
 }

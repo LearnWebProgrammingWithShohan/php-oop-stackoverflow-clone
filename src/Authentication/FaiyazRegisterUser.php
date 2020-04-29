@@ -8,7 +8,6 @@ class FaiyazRegisterUser extends FaiyazConnection
     public function register($username = 'asif', $password = 'Pass1436')
     {
         try {
-
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $this->connect()->prepare("INSERT INTO `users`(username,password) VALUES (:username,:password)");

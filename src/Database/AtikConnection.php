@@ -42,7 +42,7 @@ class AtikConnection
 
         try {
             $this->db = new PDO($dsn, $this->username, $this->password, $options);
-            #echo "Connected";
+            echo "Connected";
         } catch (Exception $e) {
             die("Connection failed" . $e->getMessage());
         }
@@ -56,3 +56,5 @@ class AtikConnection
         return $this->db;
     }
 }
+
+$databaseConnectionInstanceFromAtik = new AtikConnection('localhost', 'root', '', 'rony');
