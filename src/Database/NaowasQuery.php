@@ -53,11 +53,32 @@ class NaowasQuery
         }
     }
 
-    public function insert($tableName)
+    public function postsubmit($tableName)
     {
         if (isset($_POST['submit'])) {
-            $query = $this->connect_db->query("");
+            $title = ($_POST['title']);
+            $description = ($_POST['description']);
+            $query = $this->connect_db->query("INSERT INTO posts (title, description) VALUES ('$title', '$description')");
+            $query->execute();
+            if ($query = $this->connect_db->query($query)) {
+                echo "Post Submitted";
+            } else {
+                echo "Submission failed";
+            }
+
         }
+    }
+
+    public function editpost($tableName, $id, $title, $description)
+    {
+        $data = [
+            'title' => $title,
+            'description' => $description,
+            'id' => $id,
+        ];
+        $query = $this->connect_db->query("UPDATE $tableName SET title=:title, description=:description WHERE id=:id");
+        $query->execute($data);
+
     }
 
     public function droptable($tableName)
@@ -90,10 +111,10 @@ class NaowasQuery
         }
     }
 
-    public function findbyTitle($tableName,$title)
+    public function findbyTitle($tableName, $title)
     {
         $query = $this->connect_db->query("SELECT * FROM $tableName WHERE $title like title ");
-        $query->execute(array($tableName,$title));
+        $query->execute(array($tableName, $title));
     }
 
 }
