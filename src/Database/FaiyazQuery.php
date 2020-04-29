@@ -6,7 +6,7 @@ use PDOException;
 
 class FaiyazQuery extends FaiyazConnection
 {
-    //Using these method you have to just pass the table name and value as a array. Thenv value wibb be inserted on database
+    // INSERT QUERY SUCCESS MUST RETURN OR OUTPUT SOMETHING
     public function insert($table, array $data)
     {
         try {
@@ -93,13 +93,15 @@ class FaiyazQuery extends FaiyazConnection
             }
 
             $stmt->execute();
+            
+            // WHY YOU ARE RETURNING ROWCOUNT HERE THAT MAY NEED SOME EXPLANATION
             return $stmt->rowCount();
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 
-    //Bu using this method you can easily delete all rows on the table by passing just table name
+    // AFTER DELETE ALL SUCCESS YOU MUST RETURN OR OUTPUT SOMETHING
     public function deleteAll($table)
     {
         try {
@@ -114,7 +116,7 @@ class FaiyazQuery extends FaiyazConnection
         }
     }
 
-    //Using this method you can delete a row of a table by passing the table name and row id
+    // AFTER DELETE SUCCESS YOU MUST RETURN OR OUTPUT SOMETHING
     public function deleteById($table, $id)
     {
         try {
@@ -129,6 +131,8 @@ class FaiyazQuery extends FaiyazConnection
             echo $e->getMessage();
         }
     }
+
+    // AFTER TRUNCATE SUCCESS YOU MUST RETURN OR OUTPUT SOMETHING
 
     public function truncate($table)
     {
